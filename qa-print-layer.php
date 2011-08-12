@@ -54,6 +54,9 @@
 				
 				$this->head_title();
 				$this->head_css();
+				$this->output_raw('<script>
+				jQuery("document").ready(function(){window.print();};
+				</script>');
 				$this->head_custom();
 				
 				$this->output('</HEAD>');
@@ -205,7 +208,9 @@
 		// custom
 		
 		function printer() {
-			$this->output('<DIV><img src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($this->request).'\',\'Print View\',
+			$request = explode('/',$this->request);
+			$num = $request[0];
+			$this->output('<DIV><img src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($num.'/print').'\',\'Print View\',
                   \'toolbar=no,status=no\');" /></DIV>');
 		}
 	}
