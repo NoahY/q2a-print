@@ -13,7 +13,7 @@
 			
 		}
 
-		private pr;
+		private $pr;
 
 		function head_css()
 		{
