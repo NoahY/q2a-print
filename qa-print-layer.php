@@ -101,7 +101,7 @@
 				
 				$this->output('</DIV> <!-- END qa-q-view-main -->');
 			}
-			else qa_html_theme_base::q_view_main();
+			else qa_html_theme_base::q_view_main($q_view);
 		}
 	}
 	
