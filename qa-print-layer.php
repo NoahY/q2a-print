@@ -211,7 +211,6 @@
 					$this->output('</DIV>');
 				
 				$this->c_list(@$a_item['c_list'], 'qa-a-item');
-				$this->form(@$a_item['c_form']);
 
 				$this->output('</DIV> <!-- END qa-a-item-main -->');
 			}
