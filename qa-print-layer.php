@@ -47,11 +47,13 @@
 			}
 			else {
 				$this->output('
+				<style>
 					#printer {
 						cursor: pointer;
 						float: right;
 						margin: 12px;
-					}');
+					}
+				</style>');
 					
 				qa_html_theme_base::head_css();
 			}
