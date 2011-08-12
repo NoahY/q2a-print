@@ -12,12 +12,12 @@
 			}
 			
 		}
-		
-		global $qa_request_lc_parts;
+
+		private $pr;
 		
 		function head_css()
 		{
-			if($qa_request_lc_parts[1] == 'print') {
+			if($this->pr) {
 				$this->output('<style>
 				
 				
@@ -27,7 +27,9 @@
 		}
 		function head()
 		{
-			if($qa_request_lc_parts[1] == 'print') {
+			global $qa_request_lc_parts;
+			$this->pr = ($qa_request_lc_parts[1] == 'print');
+			if($this->pr) {
 				$this->output(
 					'<HEAD>',
 					'<META HTTP-EQUIV="Content-type" CONTENT="'.$this->content['content_type'].'"/>'
@@ -44,7 +46,8 @@
 		}		
 		function body()
 		{
-			if($qa_request_lc_parts[1] == 'print') {
+			if($this->pr) {
+
 				$this->output('<BODY>');
 				
 				$this->body_content();
@@ -56,7 +59,8 @@
 
 		function body_content()
 		{
-			if($qa_request_lc_parts[1] == 'print') {
+			if($this->pr) {
+
 				$this->output('<DIV CLASS="qa-body-wrapper">', '');
 
 				$this->main();
@@ -67,7 +71,7 @@
 		}
 		function main()
 		{
-			if($qa_request_lc_parts[1] == 'print') {
+			if($this->pr) {
 				$content=$this->content;
 
 				$this->output('<DIV CLASS="qa-main'.(@$this->content['hidden'] ? ' qa-main-hidden' : '').'">');
@@ -88,7 +92,7 @@
 		}
 		function q_view_main($q_view)
 		{
-			if($qa_request_lc_parts[1] == 'print') {
+			if($this->pr) {
 				$this->output('<DIV CLASS="qa-q-view-main">');
 
 				$this->q_view_content($q_view);
