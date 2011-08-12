@@ -13,8 +13,8 @@
 			
 		}
 
-		private $pr;
-		
+		private pr;
+
 		function head_css()
 		{
 			if($this->pr) {
@@ -22,6 +22,7 @@
 					h1, h2 {margin-bottom: 12px;}
 					.qa-vote-count {margin-bottom: 12px;}
 
+					.qa-q-view-content {margin-bottom:12px;}
 					.qa-q-view-tags {margin-bottom:12px;}
 					.qa-q-view-tag-list {list-style:none; margin:0; padding:0;}
 					.qa-q-view-tag-item {display:inline;}	
@@ -43,8 +44,8 @@
 		}
 		function head()
 		{
-			global $qa_request_lc_parts;
-			$this->pr = ($qa_request_lc_parts[1] == 'print');
+			$request_parts =  explode('/',$this->request);
+			$this->pr = ($request_parts[1] == 'print');
 			if($this->pr) {
 				$this->output(
 					'<HEAD>',
@@ -105,6 +106,13 @@
 				$this->output('</DIV> <!-- END qa-main -->', '');
 			}
 			else qa_html_theme_base::main();
+		}
+		function page_title()
+		{
+			if(!$this->pr) {
+				$this->printer();
+			}
+			qa_html_theme_base::page_title();
 		}
 		function main_parts($content)
 		{
@@ -192,6 +200,13 @@
 				$this->output('</DIV> <!-- END qa-a-item-main -->');
 			}
 			else qa_html_theme_base::a_item_main($a_item);
+		}
+		
+		// custom
+		
+		function printer() {
+			$this->output('<DIV><img src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($this->request).'\',\'Print View\',
+                  \'toolbar=no,status=no\');" /></DIV>');
 		}
 	}
 	
