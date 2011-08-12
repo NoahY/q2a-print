@@ -13,9 +13,10 @@
 			
 		}
 		
+		global $qa_request_lc_parts;
+		
 		function head_css()
 		{
-			global $qa_request_lc_parts;
 			if($qa_request_lc_parts[1] == 'print') {
 				$this->output('<style>
 				
