@@ -38,6 +38,11 @@
 					  margin: 12px 0 0 24px;
 					  padding-top: 12px;
 					}
+					#printer {
+						cursor: pointer;
+						float: right;
+						margin: 12px;
+					}
 				</style>');
 			}
 			else qa_html_theme_base::head_css();
@@ -55,7 +60,7 @@
 				$this->head_title();
 				$this->head_css();
 				$this->output_raw('<script>
-				jQuery("document").ready(function(){window.print();};
+				jQuery("document").ready(function(){window.print();});
 				</script>');
 				$this->head_custom();
 				
@@ -210,7 +215,7 @@
 		function printer() {
 			$request = explode('/',$this->request);
 			$num = $request[0];
-			$this->output('<DIV><img src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($num.'/print').'\',\'Print View\',
+			$this->output('<DIV id="printer"><img title="Print" src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($num.'/print').'\',\'Print View\',
                   \'toolbar=no,status=no\');" /></DIV>');
 		}
 	}
