@@ -125,7 +125,7 @@
 		}
 		function page_title()
 		{
-			if(!$this->pr) {
+			if(!$this->pr && $this->template == 'question') {
 				$this->printer();
 			}
 			qa_html_theme_base::page_title();
