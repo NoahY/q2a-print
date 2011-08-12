@@ -19,6 +19,7 @@
 		{
 			if($this->pr) {
 				$this->output('<style>
+					h1, h2 {margin-bottom: 12px;}
 					.qa-vote-count {margin-bottom: 12px;}
 
 					.qa-q-view-tags {margin-bottom:12px;}
@@ -27,11 +28,15 @@
 					.qa-q-view-main {border-bottom:1px dotted #666; padding-bottom:12px;}
 					.qa-q-view-meta {margin-bottom:12px;}
 
+					.qa-a-list-item {padding-top:12px;}
 					.qa-a-item-content {font-size:14px; margin-bottom:12px;}
 					.qa-a-item-main {border-bottom:1px dotted #666; padding-bottom:12px;}
-					.qa-a-item-meta {margin-bottom:12px;}
 
-					.qa-c-list-item {border-top:1px dotted #666; padding:6px; padding-right:0;}								
+					.qa-c-list-item {
+					  border-top: 1px dotted #666666;
+					  margin: 12px 0 0 24px;
+					  padding-top: 12px;
+					}
 				</style>');
 			}
 			else qa_html_theme_base::head_css();
