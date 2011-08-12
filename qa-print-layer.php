@@ -90,6 +90,29 @@
 			}
 			else qa_html_theme_base::main();
 		}
+		function main_parts($content)
+		{
+			if($this->pr) {
+				foreach ($content as $key => $part) {
+					if (strpos($key, 'custom')===0)
+						$this->output_raw($part);
+
+					elseif (strpos($key, 'form')===0)
+						$this->form($part);
+						
+					elseif (strpos($key, 'q_view')===0)
+						$this->q_view($part);
+						
+					elseif (strpos($key, 'a_list')===0)
+						$this->a_list($part);
+						
+					elseif (strpos($key, 'ranking')===0)
+						$this->ranking($part);
+						
+				}
+			}
+			else qa_html_theme_base::main_parts($content);
+		}
 		function q_view_main($q_view)
 		{
 			if($this->pr) {
