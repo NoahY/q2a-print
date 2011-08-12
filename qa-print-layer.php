@@ -20,13 +20,17 @@
 			if($this->pr) {
 				$this->output('<style>
 					.qa-vote-count {margin-bottom: 12px;}
+
 					.qa-q-view-tags {margin-bottom:12px;}
 					.qa-q-view-tag-list {list-style:none; margin:0; padding:0;}
 					.qa-q-view-tag-item {display:inline;}	
-					.qa-a-item-content {font-size:14px; margin-bottom:12px;}
 					.qa-q-view-meta {margin-bottom:12px;}
+
+					.qa-a-item-content {font-size:14px; margin-bottom:12px;}
+					.qa-a-list-item {border-bottom:1px dotted #666; margin-bottom:12px;}
 					.qa-a-item-meta {margin-bottom:12px;}
-					.qa-c-list-item {border-bottom:1px dotted #666; padding:6px; padding-right:0;}								
+
+					.qa-c-list-item {border-top:1px dotted #666; padding:6px; padding-right:0;}								
 				</style>');
 			}
 			else qa_html_theme_base::head_css();
