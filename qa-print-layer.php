@@ -15,9 +15,14 @@
 		
 		function head_css()
 		{
-			qa_html_theme_base::head_css();
 			global $qa_request_lc_parts;
-			error_log($qa_request_lc_parts[1]);
+			if($qa_request_lc_parts[1] == 'print') {
+				$this->output('<style>
+				
+				
+				</style>');
+			}
+			else qa_html_theme_base::head_css();
 		}
 		
 		
