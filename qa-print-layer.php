@@ -224,7 +224,7 @@
 			$request = explode('/',$this->request);
 			$num = $request[0];
 			$this->output('<DIV id="printer"><img title="Print" src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($num.'/print').'\',\'Print View\',
-                  \'toolbar=no,status=no\');" /></DIV>');
+                  \'resizable=yes,scrollbars=yes,toolbar=no,status=no\');" /></DIV>');
 		}
 	}
 	
