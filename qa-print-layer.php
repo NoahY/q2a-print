@@ -70,9 +70,6 @@
 				
 				$this->head_title();
 				$this->head_css();
-				$this->output_raw('<script>
-				jQuery("document").ready(function(){window.print();});
-				</script>');
 				$this->head_custom();
 				
 				$this->output('</HEAD>');
@@ -84,7 +81,7 @@
 		{
 			if($this->pr) {
 
-				$this->output('<BODY>');
+				$this->output('<BODY onload="window.print()">');
 				
 				$this->body_content();
 					
