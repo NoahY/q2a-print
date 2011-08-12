@@ -45,7 +45,16 @@
 					}
 				</style>');
 			}
-			else qa_html_theme_base::head_css();
+			else {
+				$this->output('
+					#printer {
+						cursor: pointer;
+						float: right;
+						margin: 12px;
+					}');
+					
+				qa_html_theme_base::head_css();
+			}
 		}
 		function head()
 		{
