@@ -108,5 +108,52 @@
 			}
 			else qa_html_theme_base::q_view_main($q_view);
 		}
+		function voting_inner_html($post)
+		{
+			if($this->pr) {
+				$this->vote_count($post);
+				$this->vote_clear();
+			}
+			else qa_html_theme_base::voting_inner_html($post);
+		}
+		function c_item_main($c_item)
+		{
+			if($this->pr) {
+				if (isset($c_item['url']))
+					$this->c_item_link($c_item);
+				else
+					$this->c_item_content($c_item);
+				
+				$this->output('<DIV CLASS="qa-c-item-footer">');
+				$this->post_meta($c_item, 'qa-c-item');
+				$this->output('</DIV>');
+			}
+			else qa_html_theme_base::c_item_main($c_item);
+		}
+		function a_item_main($a_item)
+		{
+			if($this->pr) {
+				$this->output('<DIV CLASS="qa-a-item-main">');
+				
+				if ($a_item['hidden'])
+					$this->output('<DIV CLASS="qa-a-item-hidden">');
+				elseif ($a_item['selected'])
+					$this->output('<DIV CLASS="qa-a-item-selected">');
+
+				$this->a_selection($a_item);
+				$this->a_item_content($a_item);
+				$this->post_meta($a_item, 'qa-a-item');
+				$this->a_item_clear();
+				
+				if ($a_item['hidden'] || $a_item['selected'])
+					$this->output('</DIV>');
+				
+				$this->c_list(@$a_item['c_list'], 'qa-a-item');
+				$this->form(@$a_item['c_form']);
+
+				$this->output('</DIV> <!-- END qa-a-item-main -->');
+			}
+			else qa_html_theme_base::a_item_main($a_item);
+		}
 	}
 	
