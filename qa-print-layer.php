@@ -61,7 +61,7 @@
 		function head()
 		{
 			$request_parts =  explode('/',$this->request);
-			$this->pr = ($request_parts[1] == 'print');
+			$this->pr = (isset($request_parts[1]) && $request_parts[1] == 'print');
 			if($this->pr) {
 				$this->output(
 					'<HEAD>',
