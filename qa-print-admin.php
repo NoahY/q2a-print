@@ -11,7 +11,7 @@
 			switch($option) {
 
 				default:
-					return false;
+					return null;
 			}
 			
 		}
