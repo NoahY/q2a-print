@@ -20,6 +20,7 @@
 			if($this->pr) {
 				$this->output('<style>
 					h1, h2 {margin-bottom: 12px;}
+					a {text-decoration:none; font-weight:bold};
 					.qa-vote-count {margin-bottom: 12px;}
 
 					.qa-q-view-content {margin-bottom:12px;}
@@ -29,15 +30,19 @@
 					.qa-q-view-main {border-bottom:1px dotted #666; padding-bottom:12px;}
 					.qa-q-view-meta {margin-bottom:12px;}
 
-					.qa-a-list-item {padding-top:12px;}
+					.qa-a-list-item {border-top:1px dotted #666; padding-top:12px;}
 					.qa-a-item-content {font-size:14px; margin-bottom:12px;}
-					.qa-a-item-main {border-bottom:1px dotted #666; padding-bottom:12px;}
+					.qa-a-item-main { padding-bottom:12px;}
 
 					.qa-c-list-item {
 					  border-top: 1px dotted #666666;
 					  margin: 12px 0 0 24px;
 					  padding-top: 12px;
 					}
+					.qa-vote-count {
+					  font-weight: bold;
+					  margin-bottom: 12px;
+					}					
 					#printer {
 						cursor: pointer;
 						float: right;
