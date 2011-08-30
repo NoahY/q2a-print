@@ -20,7 +20,7 @@
 	
 	qa_register_plugin_layer('qa-print-layer.php', 'Print View Layer');	
 	
-	//qa_register_plugin_module('module', 'qa-print-admin.php', 'qa_print_admin', 'Print View Admin');
+	qa_register_plugin_module('module', 'qa-print-admin.php', 'qa_print_admin', 'Print View Admin');
 
 /*
 	Omit PHP closing tag to help avoid accidental output

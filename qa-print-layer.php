@@ -45,7 +45,7 @@
 					}
 				</style>');
 			}
-			else {
+			else if (qa_opt('print_view')) {
 				$this->output('
 				<style>
 					#printer {
@@ -57,11 +57,13 @@
 					
 				qa_html_theme_base::head_css();
 			}
+			else qa_html_theme_base::head_css();
 		}
 		function head()
 		{
 			$request_parts =  explode('/',$this->request);
 			$this->pr = (qa_opt('print_view') && isset($request_parts[1]) && $request_parts[1] == 'print');
+			error_log(qa_opt('print_view')?'yes':'no');
 			if($this->pr) {
 				$this->output(
 					'<HEAD>',
@@ -125,7 +127,7 @@
 		}
 		function page_title()
 		{
-			if(!$this->pr && $this->template == 'question') {
+			if(!$this->pr && qa_opt('print_view') && $this->template == 'question') {
 				$this->printer();
 			}
 			qa_html_theme_base::page_title();

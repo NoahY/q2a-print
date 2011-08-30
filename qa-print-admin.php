@@ -1,20 +1,19 @@
 <?php
-	class qa_print_admin {
+    class qa_print_admin {
 		
-		function allow_template($template)
-		{
-			return ($template!='admin');
-		}
+	function allow_template($template)
+	{
+		return ($template!='admin');
+	}
 
-		function option_default($option) {
+	function option_default($option) {
 
-			switch($option) {
-
-				default:
-					return false;
-			}
-			
-		}
+	    switch($option) {
+		default:
+		    return null;
+	    }
+		
+	}
 
         function admin_form(&$qa_content)
         {                       
