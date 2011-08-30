@@ -8,12 +8,11 @@
 
 	function option_default($option) {
 
-	    switch($option) {
-		default:
-		    return null;
-	    }
-		
-	}
+		switch($option) {
+			default:
+				return null;
+			}
+		}
 
         function admin_form(&$qa_content)
         {                       
