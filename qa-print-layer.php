@@ -46,7 +46,7 @@
 					#printer {
 						cursor: pointer;
 						float: right;
-						margin: 12px;
+						margin: 12px 12px 12px 0;
 					}
 				</style>');
 			}
@@ -56,7 +56,7 @@
 					#printer {
 						cursor: pointer;
 						float: right;
-						margin: 12px;
+						margin: 12px 12px 12px 0;
 					}
 				</style>');
 					
@@ -228,7 +228,7 @@
 		function printer() {
 			$request = explode('/',$this->request);
 			$num = $request[0];
-			$this->output('<DIV id="printer"><img title="Print" src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($num.'/print').'\',\'Print View\',
+			$this->output('<DIV id="printer"><img title="'.qa_html(qa_opt('print_view_title')).'" src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($num.'/print').'\',\'Print View\',
                   \'resizable=yes,scrollbars=yes,toolbar=no,status=no\');" /></DIV>');
 		}
 	}

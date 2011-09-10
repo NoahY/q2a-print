@@ -3,16 +3,18 @@
 		
 	function allow_template($template)
 	{
-		return ($template!='admin');
+	    return ($template!='admin');
 	}
 
 	function option_default($option) {
 
-		switch($option) {
-			default:
-				return null;
-			}
-		}
+	    switch($option) {
+		case 'print_view_title':
+		    return 'Print';
+		default:
+		    return null;
+	    }
+	}
 
         function admin_form(&$qa_content)
         {                       
@@ -23,6 +25,7 @@
             
             if (qa_clicked('print_view_save')) {
                 qa_opt('print_view',(bool)qa_post_text('print_view'));
+                qa_opt('print_view_title',qa_post_text('print_view_title'));
                 $ok = 'Settings Saved.';
             }
             
@@ -38,7 +41,14 @@
                 'value' => qa_opt('print_view'),
                 'type' => 'checkbox',
             );
-            
+
+	    $fields[] = array(
+		'label' => 'Print button hover text',
+		'type' => 'text',
+		'value' => qa_html(qa_opt('print_view_title')),
+		'tags' => 'NAME="print_view_title"',
+	    );	
+           
             return array(           
                 'ok' => ($ok && !isset($error)) ? $ok : null,
                     
