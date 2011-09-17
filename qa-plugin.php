@@ -4,7 +4,7 @@
         Plugin Name: Print
         Plugin URI: https://github.com/NoahY/q2a-print
         Plugin Description: Adds print view to questions
-        Plugin Version: 0.1
+        Plugin Version: 1.0b
         Plugin Date: 2011-08-11
         Plugin Author: NoahY
         Plugin Author URI: 
