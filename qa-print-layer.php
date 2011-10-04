@@ -13,11 +13,11 @@
 			
 		}
 
-		private $pr;
+		private $is_print_view;
 
 		function head_css()
 		{
-			if($this->pr) {
+			if($this->is_print_view) {
 				$this->output('<style>
 					h1, h2 {margin-bottom: 12px;}
 					a {text-decoration:none; font-weight:bold};
@@ -67,8 +67,8 @@
 		function head()
 		{
 			$request_parts =  explode('/',$this->request);
-			$this->pr = (qa_opt('print_view') && isset($request_parts[1]) && $request_parts[1] == 'print');
-			if($this->pr) {
+			$this->is_print_view = (qa_opt('print_view') && isset($request_parts[1]) && $request_parts[1] == 'print');
+			if($this->is_print_view) {
 				$this->output(
 					'<HEAD>',
 					'<META HTTP-EQUIV="Content-type" CONTENT="'.$this->content['content_type'].'"/>'
@@ -85,7 +85,7 @@
 		}		
 		function body()
 		{
-			if($this->pr) {
+			if($this->is_print_view) {
 
 				$this->output('<BODY onload="window.print()">');
 				
@@ -98,7 +98,7 @@
 
 		function body_content()
 		{
-			if($this->pr) {
+			if($this->is_print_view) {
 
 				$this->output('<DIV CLASS="qa-body-wrapper">', '');
 
@@ -110,7 +110,7 @@
 		}
 		function main()
 		{
-			if($this->pr) {
+			if($this->is_print_view) {
 				$content=$this->content;
 
 				$this->output('<DIV CLASS="qa-main'.(@$this->content['hidden'] ? ' qa-main-hidden' : '').'">');
@@ -131,14 +131,14 @@
 		}
 		function page_title()
 		{
-			if(!$this->pr && qa_opt('print_view') && $this->template == 'question') {
-				$this->printer();
+			if(!$this->is_print_view && qa_opt('print_view') && $this->template == 'question') {
+				$this->is_print_viewinter();
 			}
 			qa_html_theme_base::page_title();
 		}
 		function main_parts($content)
 		{
-			if($this->pr) {
+			if($this->is_print_view) {
 				foreach ($content as $key => $part) {
 					if (strpos($key, 'custom')===0)
 						$this->output_raw($part);
@@ -161,7 +161,7 @@
 		}
 		function q_view_main($q_view)
 		{
-			if($this->pr) {
+			if($this->is_print_view) {
 				$this->output('<DIV CLASS="qa-q-view-main">');
 
 				$this->q_view_content($q_view);
@@ -179,7 +179,7 @@
 		}
 		function voting_inner_html($post)
 		{
-			if($this->pr) {
+			if($this->is_print_view) {
 				$this->vote_count($post);
 				$this->vote_clear();
 			}
@@ -187,7 +187,7 @@
 		}
 		function c_item_main($c_item)
 		{
-			if($this->pr) {
+			if($this->is_print_view) {
 				if (isset($c_item['url']))
 					$this->c_item_link($c_item);
 				else
@@ -201,7 +201,7 @@
 		}
 		function a_item_main($a_item)
 		{
-			if($this->pr) {
+			if($this->is_print_view) {
 				$this->output('<DIV CLASS="qa-a-item-main">');
 				
 				if ($a_item['hidden'])
