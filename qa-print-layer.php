@@ -132,7 +132,7 @@
 		function page_title()
 		{
 			if(!$this->is_print_view && qa_opt('print_view') && $this->template == 'question') {
-				$this->is_print_viewinter();
+				$this->printer();
 			}
 			qa_html_theme_base::page_title();
 		}
