@@ -114,8 +114,11 @@
 				$content=$this->content;
 
 				$this->output('<DIV CLASS="qa-main'.(@$this->content['hidden'] ? ' qa-main-hidden' : '').'">');
-				
-				$this->page_title();			
+
+				if(method_exists(qa_html_theme_base,'page_title'))
+					$this->page_title();			
+				else if(method_exists(qa_html_theme_base,'page_title_error'))
+					$this->page_title_error();			
 
 				if (isset($content['main_form_tags']))
 					$this->output('<FORM '.$content['main_form_tags'].'>');
@@ -135,6 +138,13 @@
 				$this->printer();
 			}
 			qa_html_theme_base::page_title();
+		}
+		function page_title_error()
+		{
+			if(!$this->is_print_view && qa_opt('print_view') && $this->template == 'question') {
+				$this->printer();
+			}
+			qa_html_theme_base::page_title_error();
 		}
 		function main_parts($content)
 		{
