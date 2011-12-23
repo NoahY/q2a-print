@@ -114,11 +114,13 @@
 				$content=$this->content;
 
 				$this->output('<DIV CLASS="qa-main'.(@$this->content['hidden'] ? ' qa-main-hidden' : '').'">');
-
-				if(method_exists(qa_html_theme_base,'page_title'))
-					$this->page_title();			
-				else if(method_exists(qa_html_theme_base,'page_title_error'))
-					$this->page_title_error();			
+				
+				if(class_exists('qa_html_theme_base')) {
+					if(method_exists(qa_html_theme_base,'page_title'))
+						$this->page_title();			
+					else if(method_exists(qa_html_theme_base,'page_title_error'))
+						$this->page_title_error();
+				}
 
 				if (isset($content['main_form_tags']))
 					$this->output('<FORM '.$content['main_form_tags'].'>');
