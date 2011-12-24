@@ -4,13 +4,9 @@
 
 	// register default settings
 
-		function option_default($option) {
-
-			switch($option) {
-				default:
-					return false;
-			}
-			
+		function doctype() {
+			$request_parts =  explode('/',$this->request);
+			$this->is_print_view = (qa_opt('print_view') && isset($request_parts[1]) && $request_parts[1] == 'print');			
 		}
 
 		private $is_print_view;
@@ -66,8 +62,7 @@
 		}
 		function head()
 		{
-			$request_parts =  explode('/',$this->request);
-			$this->is_print_view = (qa_opt('print_view') && isset($request_parts[1]) && $request_parts[1] == 'print');
+
 			if($this->is_print_view) {
 				$this->output(
 					'<HEAD>',
@@ -115,12 +110,10 @@
 
 				$this->output('<DIV CLASS="qa-main'.(@$this->content['hidden'] ? ' qa-main-hidden' : '').'">');
 				
-				if(class_exists('qa_html_theme_base')) {
-					if(method_exists(qa_html_theme_base,'page_title'))
-						$this->page_title();			
-					else if(method_exists(qa_html_theme_base,'page_title_error'))
-						$this->page_title_error();
-				}
+				if(method_exists(qa_html_theme_base,'page_title'))
+					$this->page_title();			
+				else if(method_exists(qa_html_theme_base,'page_title_error'))
+					$this->page_title_error();
 
 				if (isset($content['main_form_tags']))
 					$this->output('<FORM '.$content['main_form_tags'].'>');
