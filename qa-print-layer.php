@@ -6,7 +6,9 @@
 
 		function doctype() {
 			$request_parts =  explode('/',$this->request);
-			$this->is_print_view = (qa_opt('print_view') && isset($request_parts[1]) && $request_parts[1] == 'print');			
+			$this->is_print_view = (qa_opt('print_view') && isset($request_parts[1]) && $request_parts[1] == 'print');
+			$test = $this->content['asdf'];		
+			qa_html_theme_base::doctype();	
 		}
 
 		private $is_print_view;
