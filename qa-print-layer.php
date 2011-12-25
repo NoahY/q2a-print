@@ -5,9 +5,7 @@
 	// register default settings
 
 		function doctype() {
-			$request_parts =  explode('/',$this->request);
-			$this->is_print_view = (qa_opt('print_view') && isset($request_parts[1]) && $request_parts[1] == 'print');
-			$test = $this->content['asdf'];		
+			$this->is_print_view = (qa_opt('print_view') && qa_get('print') == 'true');
 			qa_html_theme_base::doctype();	
 		}
 
@@ -233,9 +231,7 @@
 		// custom
 		
 		function printer() {
-			$request = explode('/',$this->request);
-			$num = $request[0];
-			$this->output('<DIV id="printer"><img title="'.qa_html(qa_opt('print_view_title')).'" src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($num.'/print').'\',\'PrintView\',
+			$this->output('<DIV id="printer"><img title="'.qa_html(qa_opt('print_view_title')).'" src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($this->request).'?print=true\',\'PrintView\',
                   \'resizable=yes,scrollbars=yes,toolbar=no,status=no\');" /></DIV>');
 		}
 	}
