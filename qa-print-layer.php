@@ -106,14 +106,15 @@
 		function main()
 		{
 			if($this->is_print_view) {
+				unset($this->content['favorite']);
 				$content=$this->content;
 
 				$this->output('<DIV CLASS="qa-main'.(@$this->content['hidden'] ? ' qa-main-hidden' : '').'">');
 				
-				if(method_exists(qa_html_theme_base,'page_title'))
-					$this->page_title();			
-				else if(method_exists(qa_html_theme_base,'page_title_error'))
+				if(function_exists('qa_register_plugin_phrases'))
 					$this->page_title_error();
+				else
+					$this->page_title();			
 
 				if (isset($content['main_form_tags']))
 					$this->output('<FORM '.$content['main_form_tags'].'>');
@@ -231,7 +232,7 @@
 		// custom
 		
 		function printer() {
-			$this->output('<DIV id="printer"><img title="'.qa_html(qa_opt('print_view_title')).'" src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($this->request).'?print=true\',\'PrintView\',
+			$this->output('<DIV id="printer"><img title="'.qa_html(qa_opt('print_view_title')).'" src="'.QA_HTML_THEME_LAYER_URLTOROOT.'print.png'.'" onclick="window.open(\''.qa_path_html($this->request,array('print'=>'true')).'\',\'PrintView\',
                   \'resizable=yes,scrollbars=yes,toolbar=no,status=no\');" /></DIV>');
 		}
 	}
