@@ -3,7 +3,7 @@
 /*
         Plugin Name: Print
         Plugin URI: https://github.com/NoahY/q2a-print
-        Plugin Update Check URI: https://github.com/NoahY/q2a-print/raw/master/qa-plugin.php
+        Plugin Update Check URI: https://raw.github.com/NoahY/q2a-print/master/qa-plugin.php
         Plugin Description: Adds print view to questions
         Plugin Version: 1.0b
         Plugin Date: 2011-08-11
